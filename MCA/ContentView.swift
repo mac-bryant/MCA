@@ -9,8 +9,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let buttons = [
+        ["Contact", "Directory", "Events"],
+        ["Labor", "Messages", "News"],
+        ["Convention", "Sponsors", "MCA"],
+    ]
+    
     var body: some View {
-        Text("Hello, World!")
+        
+        ZStack (alignment: .center) {
+            Color.black.edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 12) {
+                
+                ForEach(buttons, id: \.self) { row in
+                    HStack {
+                        ForEach(row, id: \.self) { button in
+                            Text(button)
+                                .font(.system(size: 15))
+                                .frame(width: 100, height: 100)
+                                .foregroundColor(.white)
+                                .background(Color.blue)
+                                .cornerRadius(60)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
